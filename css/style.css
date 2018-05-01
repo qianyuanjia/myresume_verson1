@@ -3,7 +3,7 @@ html{min-width: 1300px;height: 100%;}
 body,#idx1,#idx2,#idx4,#idx5{width: 100%;height: 100%;overflow-x:hidden; }
 #idx1{
 	position: relative;
-	background:url(../images/bg.jpg); 
+	background:url(../images/bg.jpg) no-repeat; 
 }
 #idx1 .mark{
 	width: 100%;height: 100%;
@@ -133,7 +133,7 @@ body,#idx1,#idx2,#idx4,#idx5{width: 100%;height: 100%;overflow-x:hidden; }
 }
 .right_text .strength{
 	height: 200px;
-	background: url(../images/stren.jpg);
+	background: url(../images/stren.jpg) no-repeat;
 	background-size: cover;
 }
 #bot_btn2{
@@ -190,7 +190,7 @@ body,#idx1,#idx2,#idx4,#idx5{width: 100%;height: 100%;overflow-x:hidden; }
 }
 
 #idx5{
-	background:url(../images/bg2.jpg);
+	background:url(../images/bg2.jpg) no-repeat;
 }
 #idx5 .top{
 	height: 120px;

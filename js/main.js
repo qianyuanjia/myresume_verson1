@@ -23,15 +23,15 @@ window.onload=function(){
 		shakeBtn(aBotBtn[i],6,2);		
 	}
 	window.onscroll=function(){
-		if(flag && document.documentElement.scrollTop>pageHeight-200){
+		if(flag && getScrollTop()>pageHeight-200){
 			drawSvg(oStrength,colorArr,textArr);
 			flag=false;
 		}
-		if(can_flag && document.documentElement.scrollTop>pageHeight-200){
+		if(can_flag && getScrollTop()>pageHeight-200){
 			createCanvas(oIdx4);
 			can_flag=false;	
 		}
-		if(stren_flag && document.documentElement.scrollTop>2*pageHeight-200){
+		if(stren_flag && getScrollTop()>2*pageHeight-200){
 				drawStren(oSkill,deg,strenColor,strenText);
 				setInterval(function(){
 					deg+=1;
@@ -45,7 +45,9 @@ window.onload=function(){
 
 
 };
-
+function getScrollTop(){
+	return document.documentElement.scrollTop || document.body.scrollTop;
+}
 function setArr(num,step){
 	var arr=[];
 	for(var i=num;i>0;i-=step){
@@ -67,20 +69,24 @@ function shakeBtn(obj,num,step){
 	},200);
 }
 
+function setScrollTop(dis){
+	document.documentElement.scrollTop=document.body.scrollTop=dis;
+}
+
 function pageDown(obj,pageHeight,callback){
 	clearInterval(obj.timer);
-	var startTop=document.documentElement.scrollTop;
+	var startTop=getScrollTop();
 	var dis=pageHeight-startTop;
 	obj.timer=setInterval(function(){
-		var nowTop=document.documentElement.scrollTop;
+		var nowTop=getScrollTop();
 		var speed=(dis-(nowTop-startTop))/6;
 		if(Math.abs(speed)<=1){
 			speed=0;
 		}
-		document.documentElement.scrollTop+=speed;
+		setScrollTop(getScrollTop()+speed);
 		if(speed==0){
 			clearInterval(obj.timer);
-			document.documentElement.scrollTop=pageHeight;
+			setScrollTop(pageHeight);
 			callback&&callback();
 		}
 	},20);
